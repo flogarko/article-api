@@ -69,6 +69,7 @@ swiftmailer:
     spool: { type: memory }
 
 fos_rest:
+    param_fetcher_listener: force
     view:
         formats: { json: true, xml: false, rss: false }
         view_response_listener: true
@@ -76,6 +77,12 @@ fos_rest:
         serialize_null: true
     body_converter:
         enabled: true
+        validate: true
+        validation_errors_argument: violations
     format_listener:
         rules:
             - { path: '^/', priorities: ['json'], fallback_format: 'json' }
+    exception:
+        enabled: true
+        codes:
+           { AppBundle\Exception\ResourceValidationException: 400, Exception: 500 }

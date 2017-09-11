@@ -3,12 +3,17 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use JMS\Serializer\Annotation as Serializer;
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Article
  *
  * @ORM\Table(name="article")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ArticleRepository")
+ *
+ * @ExclusionPolicy("all")
  */
 class Article
 {
@@ -18,6 +23,8 @@ class Article
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     *
+     * @Expose
      */
     private $id;
 
@@ -25,6 +32,9 @@ class Article
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=100)
+     *
+     * @Expose
+     * @Assert\NotBlank(groups={"Create"})
      */
     private $title;
 
@@ -32,6 +42,9 @@ class Article
      * @var string
      *
      * @ORM\Column(name="content", type="text")
+     *
+     * @Expose
+     * @Assert\NotBlank(groups={"Create"})
      */
     private $content;
 
@@ -40,6 +53,8 @@ class Article
      * Get id
      *
      * @return int
+     *
+     * @Expose
      */
     public function getId()
     {

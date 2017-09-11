@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="article-api">
+    <serverData>
+      <paths name="article-api">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="article-api" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>
